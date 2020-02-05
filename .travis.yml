@@ -3,5 +3,5 @@ sudo: true
 dist: trusty
 jdk: 
   - oraclejdk13
-before_script: 
-  - chmod a+x ./mvnw
+before_install:
+  - chmod +x mvnw
