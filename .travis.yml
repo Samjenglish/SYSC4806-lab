@@ -2,7 +2,7 @@ language: java
 sudo: true
 dist: trusty
 jdk: 
-  - oraclejdk10
+  - oraclejdk13
 before_install:
   - chmod +x mvnw
 deploy:
