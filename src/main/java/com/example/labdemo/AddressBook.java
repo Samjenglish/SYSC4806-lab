@@ -8,6 +8,7 @@ import java.util.List;
 public class AddressBook {
     private List<BuddyInfo> buddyList = new ArrayList<BuddyInfo>();
     private Long id;
+    private String bookName;
 
     public static void main(String[] args) {
         AddressBook newBook = new AddressBook();
@@ -19,7 +20,21 @@ public class AddressBook {
         newBook.addBuddy(buddy3);
         System.out.println(newBook.toString());
     }
-
+    public AddressBook(){
+    }
+    public AddressBook(String bookName){
+        this.setBookName(bookName);
+    }
+    public AddressBook(String bookName, List<BuddyInfo> addressList){
+        this.setBookName(bookName);
+        this.setAddressList(addressList);
+    }
+    public void setBookName(String bookName){
+        this.bookName = bookName;
+    }
+    public String getBookName(){
+        return this.bookName;
+    }
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

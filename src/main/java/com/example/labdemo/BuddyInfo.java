@@ -1,10 +1,12 @@
 package com.example.labdemo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class BuddyInfo implements Serializable {
+public class BuddyInfo {
     private Long id;
     private String name;
     private AddressBook addressBook;
@@ -12,6 +14,8 @@ public class BuddyInfo implements Serializable {
     public BuddyInfo(String name, String phoneNumber){
         this.name = name;
         this.phoneNumber = phoneNumber;
+    }
+    public BuddyInfo(){
     }
 
     @Id
@@ -23,6 +27,7 @@ public class BuddyInfo implements Serializable {
         this.id = id;
     }
 
+    @JsonIgnore
     @ManyToOne
     public AddressBook getAddressBook() {
         return addressBook;
