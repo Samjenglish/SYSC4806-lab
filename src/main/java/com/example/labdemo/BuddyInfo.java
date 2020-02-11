@@ -11,11 +11,16 @@ public class BuddyInfo {
     private String name;
     private AddressBook addressBook;
     private String phoneNumber;
+    public BuddyInfo(){
+    }
     public BuddyInfo(String name, String phoneNumber){
         this.name = name;
         this.phoneNumber = phoneNumber;
     }
-    public BuddyInfo(){
+    public BuddyInfo(String name, String phoneNumber, AddressBook book){
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.setAddressBook(book);
     }
 
     @Id
