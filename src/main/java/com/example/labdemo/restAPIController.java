@@ -24,19 +24,27 @@ public class restAPIController {
        return  buddyInfoRepository.findById(buddyId).orElseThrow(() -> new ItemNotFoundException(buddyId));
     }
     @PostMapping("/buddyinfo")
-    public BuddyInfo createBuddyInfo(@Valid @RequestBody BuddyInfo buddy){
+    public BuddyInfo createBuddyInfo(@RequestParam String bookId, @RequestParam String name, @RequestParam String phoneNumber){
+        BuddyInfo buddy = new BuddyInfo(name, phoneNumber);
+        AddressBook book = addressBookRepository.findById(Long.valueOf(bookId)).orElseThrow(() -> new ItemNotFoundException(Long.valueOf(bookId)));
+        book.addBuddy(buddy);
+        buddy.setAddressBook(book);
+        addressBookRepository.save(book);
         return buddyInfoRepository.save(buddy);
     }
+
     @GetMapping("/addressbook")
     public List<AddressBook> getAllAddressBooks() {
         return  addressBookRepository.findAll();
     }
+
     @GetMapping("/addressbook/{id}")
     public AddressBook getAddressBook(@PathVariable(value = "id") Long bookId) {
         return  addressBookRepository.findById(bookId).orElseThrow(() -> new ItemNotFoundException(bookId));
     }
     @PostMapping("/addressbook")
-    public AddressBook createAddressBook(@Valid @RequestBody AddressBook book){
+    public AddressBook createAddressBook(@RequestParam String bookName){
+        AddressBook book = new AddressBook(bookName);
         return addressBookRepository.save(book);
     }
     @PostMapping("/addressbook/{bookId}")

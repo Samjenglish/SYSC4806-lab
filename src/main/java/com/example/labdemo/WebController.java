@@ -40,7 +40,6 @@ public class WebController {
         book.addBuddy(buddy);
         buddy.setAddressBook(book);
         addressBookRepository.save(book);
-        AddressBook book2 = addressBookRepository.findById(Long.valueOf(bookId)).orElseThrow(() -> new ItemNotFoundException(Long.valueOf(bookId)));
         return "sucbuddyinfo.html";
     }
     @GetMapping("/content")
