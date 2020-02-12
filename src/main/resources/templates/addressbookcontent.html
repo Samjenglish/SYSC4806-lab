@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Address Book Application</title>
+    <meta http-equiv="Content-Type" content="text/html;" />
+</head>
+<body>
+    <h1>Current AddressBooks</h1>
+    <ul>
+        <li th:each="ab, iterBook: ${books}">
+            <h2>[[${ab.bookName}]]</h2>
+            <ul>
+                <li th:each="bud, iterBud : ${ab.buddyList}">
+                    <p>Buddy# [[${iterBud.index}]]</p>
+                    <p>Name: [[${bud.name}]] - Phone Number: [[${bud.phoneNumber}]]</p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div id="formLinks">
+        <a href="/buddyinfoform">Add buddy to existing Address Book</a>
+        <br>
+        <a href="/addressbookform">Create new Address Book</a>
+    </div>
+</body>
+</html>

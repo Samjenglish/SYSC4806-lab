@@ -14,8 +14,8 @@ public class ServingWebContentApplication {
 	@Bean
 	public CommandLineRunner demoData(AddressBookRepository addressBookRepository, BuddyInfoRepository buddyInfoRepository) {
 		return args -> {
-			AddressBook book1 = new AddressBook("test book 1");
-			AddressBook book2 = new AddressBook("test book 2");
+			AddressBook book1 = new AddressBook("Book1");
+			AddressBook book2 = new AddressBook("Book2");
 			BuddyInfo bud1 = new BuddyInfo("Sam", "12");
 			BuddyInfo bud2 = new BuddyInfo("Austin", "4312");
 			BuddyInfo bud3 = new BuddyInfo("Nikola", "43");

@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Add a new add buddyinfo to an address book</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Form</h1>
+<form action="#" th:action="@{/buddyinfo}"  method="post">
+    <label th:each="ab, iterBook: ${books}">[[${ab.bookName}]] <input  type="radio" th:value="${ab.id}" name="bookId"><br></label><br>
+    <p>Name: <input type="text" name="name"/></p>
+    <p>Phone number: <input type="text" name="phoneNumber"/></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+<a href="/content">Return to content</a>
+</body>
+</html>

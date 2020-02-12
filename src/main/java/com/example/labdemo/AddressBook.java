@@ -11,23 +11,15 @@ public class AddressBook {
     private String bookName;
 
     public static void main(String[] args) {
-        AddressBook newBook = new AddressBook();
-        BuddyInfo buddy1 = new BuddyInfo("Sam", "18001234");
-        BuddyInfo buddy2 = new BuddyInfo("Austin", "9876543");
-        BuddyInfo buddy3 = new BuddyInfo("Nikola", "3456789");
-        newBook.addBuddy(buddy1);
-        newBook.addBuddy(buddy2);
-        newBook.addBuddy(buddy3);
-        System.out.println(newBook.toString());
     }
     public AddressBook(){
     }
     public AddressBook(String bookName){
         this.setBookName(bookName);
     }
-    public AddressBook(String bookName, List<BuddyInfo> addressList){
+    public AddressBook(String bookName, List<BuddyInfo> buddyList){
         this.setBookName(bookName);
-        this.setAddressList(addressList);
+        this.setBuddyList(buddyList);
     }
     public void setBookName(String bookName){
         this.bookName = bookName;
@@ -56,13 +48,13 @@ public class AddressBook {
     }
 
     @OneToMany(mappedBy = "addressBook", cascade = CascadeType.ALL)
-    public List<BuddyInfo> getAddressList(){
+    public List<BuddyInfo> getBuddyList(){
         return this.buddyList;
     }
-    public void setAddressList(List<BuddyInfo> buddyList){
+    public void setBuddyList(List<BuddyInfo> buddyList){
         this.buddyList = buddyList;
     }
-    public String toString(){
+    public String createFullString(){
         String returnString = "";
         for(int i = 0; i < this.buddyList.size(); i++){
             returnString += (this.buddyList.get(i).getName() + ' ' + this.buddyList.get(i).getPhoneNumber() + "\n");
