@@ -7,9 +7,9 @@
 <body>
     <h1>Current Address Books in the system</h1>
     <ul id="addressBookList">
-        <li th:each="ab, iterBook: ${books}">
+        <li th:each="ab, iterBook: ${books}" th:id="item_ + ${ab.id}">
             <h2>[[${ab.bookName}]]</h2>
-            <ul>
+            <ul th:id="${ab.id} + _buddyList">
                 <li th:each="bud, iterBud : ${ab.buddyList}">
                     <p>Buddy# [[${iterBud.index}]]</p>
                     <p>Name: [[${bud.name}]] - Phone Number: [[${bud.phoneNumber}]]</p>
@@ -26,7 +26,9 @@
     <br>
     <h1>Add new buddy to an Address Book</h1>
     <form id="buddyForm" action="#" th:action="@{/buddyinfo}"  method="post">
-        <label th:each="ab, iterBook: ${books}">[[${ab.bookName}]] <input  type="radio" th:value="${ab.id}" name="bookId"><br></label><br>
+        <div id="bookRadioButtons">
+            <label th:each="ab, iterBook: ${books}">[[${ab.bookName}]] <input  type="radio" th:value="${ab.id}" name="bookId"><br></label>
+        </div>
         <p>Name: <input type="text" name="name"/></p>
         <p>Phone number: <input type="text" name="phoneNumber"/></p>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>

@@ -24,13 +24,12 @@ public class restAPIController {
        return  buddyInfoRepository.findById(buddyId).orElseThrow(() -> new ItemNotFoundException(buddyId));
     }
     @PostMapping("/buddyinfo")
-    public BuddyInfo createBuddyInfo(@RequestParam String bookId, @RequestParam String name, @RequestParam String phoneNumber){
+    public AddressBook createBuddyInfo(@RequestParam String bookId, @RequestParam String name, @RequestParam String phoneNumber){
         BuddyInfo buddy = new BuddyInfo(name, phoneNumber);
         AddressBook book = addressBookRepository.findById(Long.valueOf(bookId)).orElseThrow(() -> new ItemNotFoundException(Long.valueOf(bookId)));
         book.addBuddy(buddy);
         buddy.setAddressBook(book);
-        addressBookRepository.save(book);
-        return buddyInfoRepository.save(buddy);
+        return addressBookRepository.save(book);
     }
 
     @GetMapping("/addressbook")
